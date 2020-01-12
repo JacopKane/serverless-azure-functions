@@ -262,7 +262,7 @@ describe("Arm Service", () => {
       const deployment = await service.createDeploymentFromType(ArmTemplateType.Consumption);
       await service.deployTemplate(deployment);
 
-      const appSettings: any[] = jsonpath.query(deployment.template, "$.resources[?(@.kind==\"functionapp\")].properties.siteConfig.appSettings[*]");
+      const appSettings: any[] = jsonpath.query(deployment.template, "$.resources[?(@.kind==\"functionapp,linux\")].properties.siteConfig.appSettings[*]");
       expect(appSettings.find((setting) => setting.name === "PARAM_1")).toEqual({ name: "PARAM_1", value: environmentConfig.PARAM_1 });
       expect(appSettings.find((setting) => setting.name === "PARAM_2")).toEqual({ name: "PARAM_2", value: environmentConfig.PARAM_2 });
       expect(appSettings.find((setting) => setting.name === "PARAM_3")).toEqual({ name: "PARAM_3", value: environmentConfig.PARAM_3 });

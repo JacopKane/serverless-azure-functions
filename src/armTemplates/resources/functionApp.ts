@@ -78,7 +78,7 @@ export class FunctionAppResource implements ArmResourceTemplateGenerator {
             "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
             "[concat('microsoft.insights/components/', parameters('appInsightsName'))]"
           ],
-          "kind": "functionapp",
+          "kind": "functionapp,linux",
           "properties": {
             "siteConfig": {
               "appSettings": [
